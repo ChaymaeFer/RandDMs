@@ -354,7 +354,7 @@ resource "azurerm_virtual_network_gateway" "VPN" {
   ip_configuration {
     name                          = "vnetGatewayConfig"
     public_ip_address_id          = "${azurerm_public_ip.VPN.id}"
-    private_ip_address_allocation = "Static"
+    private_ip_address_allocation = "Dynamic"
     subnet_id                     = "${azurerm_subnet.VPN.id}"
   }
 
