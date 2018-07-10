@@ -1,15 +1,9 @@
-variable azure_subscription_id {
+# variable defining VM Name
+
+variable azure_VMAdminName {
   type = "string"
 }
 
-variable azure_client_id {
-  type = "string"
-}
-
-variable azure_client_secret {
-  type = "string"
-}
-
-variable azure_tenant_id {
+variable azure_VMAdminPassword {
   type = "string"
 }

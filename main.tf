@@ -236,8 +236,8 @@ resource "azurerm_virtual_machine" "RP" {
   }
   os_profile {
     computer_name  = "hostname"
-    admin_username = "admin-mms"
-    admin_password = "alstomSIGMA8@"
+    admin_username = "${var.azure_VMAdminName}"
+    admin_password = "${var.azure_VMAdminPassword}"
   }
   os_profile_linux_config {
     disable_password_authentication = false
@@ -284,8 +284,8 @@ resource "azurerm_virtual_machine" "DB" {
   }
   os_profile {
     computer_name  = "hostname"
-    admin_username = "admin-mms"
-    admin_password = "alstomSIGMA8@"
+    admin_username = "${var.azure_VMAdminName}"
+    admin_password = "${var.azure_VMAdminPassword}"
   }
   os_profile_windows_config {
     enable_automatic_upgrades = false
@@ -332,8 +332,8 @@ resource "azurerm_virtual_machine" "WAS" {
   }
   os_profile {
     computer_name  = "hostname"
-    admin_username = "admin-mms"
-    admin_password = "alstomSIGMA8@"
+    admin_username = "${var.azure_VMAdminName}"
+    admin_password = "${var.azure_VMAdminPassword}"
   }
   os_profile_windows_config {
     enable_automatic_upgrades = false
