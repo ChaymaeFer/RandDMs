@@ -205,7 +205,7 @@ resource "azurerm_virtual_machine" "RP" {
   location              = "${azurerm_resource_group.RG.location}"
   resource_group_name   = "${azurerm_resource_group.RG.name}"
   network_interface_ids = ["${azurerm_network_interface.RP.id}"]
-  vm_size               = "Standard_A0"
+  vm_size               = "Standard_F2s_v2"
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
   #delete_os_disk_on_termination = true
@@ -250,7 +250,7 @@ resource "azurerm_virtual_machine" "DB" {
   location              = "${azurerm_resource_group.RG.location}"
   resource_group_name   = "${azurerm_resource_group.RG.name}"
   network_interface_ids = ["${azurerm_network_interface.DB.id}"]
-  vm_size               = "Standard_B2ms"
+  vm_size               = "Standard_D2s_v3"
 
   #vm_size               = "Standard B2ms"
 
@@ -299,9 +299,6 @@ resource "azurerm_virtual_machine" "WAS" {
   resource_group_name   = "${azurerm_resource_group.RG.name}"
   network_interface_ids = ["${azurerm_network_interface.WAS.id}"]
   vm_size               = "Standard_B2ms"
-
-  # vm_size               = "Standard B2ms"
-
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
   #delete_os_disk_on_termination = true
