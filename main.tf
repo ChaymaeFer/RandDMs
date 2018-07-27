@@ -232,7 +232,7 @@ resource "azurerm_virtual_machine" "RP" {
     vhd_uri       = "${azurerm_storage_account.RP.primary_blob_endpoint}${azurerm_storage_container.RP.name}/datadisk_RP.vhd"
     create_option = "Empty"
     lun           = 0
-    disk_size_gb  = "20"
+    disk_size_gb  = "50"
   }
   os_profile {
     computer_name  = "hostname"
