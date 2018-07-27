@@ -388,7 +388,7 @@ resource "azurerm_virtual_machine" "WAS" {
 
 # VPN
 # Create the VPN
-/* resource "azurerm_virtual_network_gateway" "VPN" {
+resource "azurerm_virtual_network_gateway" "VPN" {
   name                = "VPN-MMS-RandDMs"
   location            = "${azurerm_resource_group.RG.location}"
   resource_group_name = "${azurerm_resource_group.RG.name}"
@@ -419,5 +419,3 @@ EOF
     }
   }
 }
- */
-
