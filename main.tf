@@ -292,6 +292,53 @@ resource "azurerm_virtual_machine" "DB" {
   }
 }
 
+# l'extension sql server 
+resource "azurerm_virtual_machine_extension" "DB" {
+  name                 = "SqlIaasExtension"
+  location             = "${azurerm_resource_group.RG.location}"
+  resource_group_name  = "${azurerm_resource_group.RG.name}"
+  virtual_machine_name = "${azurerm_virtual_machine.DB.name}"
+  publisher            = "Microsoft.SqlServer.Management"
+  type                 = "SqlIaaSAgent"
+  type_handler_version = "1.2"
+
+  settings = <<SETTINGS
+    "sqlConnectivityType": {
+            "value": "Private"
+    },
+     "sqlPortNumber": {
+            "value": 1433
+    },
+    "sqlStorageDisksCount": {
+            "value": 1
+     },
+    "sqlStorageWorkloadType": {
+            "value": "GENERAL"
+    },
+    "sqlStorageDisksConfigurationType": {
+            "value": "NEW"
+    },
+    "sqlStorageStartingDeviceId": {
+            "value": 2
+    },
+    "sqlStorageDeploymentToken": {
+            "value": 34166
+    },
+    "sqlAutopatchingDayOfWeek": {
+            "value": "Sunday"
+    },
+    "sqlAutopatchingStartHour": {
+            "value": "2"
+    },
+    "sqlAutopatchingWindowDuration": {
+            "value": "60"
+     },
+    "rServicesEnabled": {
+            "value": "false"
+    }
+SETTINGS
+}
+
 # Create the WAS VM
 resource "azurerm_virtual_machine" "WAS" {
   name                  = "VM-WAS-MMS-RandDMs-DEV"
