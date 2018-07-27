@@ -408,7 +408,8 @@ resource "azurerm_virtual_network_gateway" "VPN" {
   }
 
   vpn_client_configuration {
-    address_space = ["192.168.10.0/24"]
+    address_space       = ["192.168.10.0/24"]
+    vpn_client_protocol = ["SSTP"]
 
     root_certificate {
       name = "RandDMSRootCert"
