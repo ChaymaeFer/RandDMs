@@ -303,6 +303,7 @@ resource "azurerm_virtual_machine_extension" "DB" {
   type_handler_version = "1.2"
 
   settings = <<SETTINGS
+  {
     "sqlConnectivityType": {
             "value": "Private"
     },
@@ -336,6 +337,7 @@ resource "azurerm_virtual_machine_extension" "DB" {
     "rServicesEnabled": {
             "value": "false"
     }
+  }
 SETTINGS
 }
 
