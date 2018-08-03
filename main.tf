@@ -102,10 +102,9 @@ resource "azurerm_public_ip" "VPN" {
 # INTERFACE(THREE)
 # Create the RP interface
 resource "azurerm_network_interface" "RP" {
-  name                      = "IR-RP-MMS-RandDMs-DEV"
-  location                  = "${azurerm_resource_group.RG.location}"
-  resource_group_name       = "${azurerm_resource_group.RG.name}"
-  network_security_group_id = "${azurerm_network_security_group.RP.id}"
+  name                = "IR-RP-MMS-RandDMs-DEV"
+  location            = "${azurerm_resource_group.RG.location}"
+  resource_group_name = "${azurerm_resource_group.RG.name}"
 
   ip_configuration {
     name                          = "config-privateip-rp"
@@ -118,10 +117,9 @@ resource "azurerm_network_interface" "RP" {
 
 # Create the database interface
 resource "azurerm_network_interface" "DB" {
-  name                      = "IR-DB-MMS-RandDMs-DEV"
-  location                  = "${azurerm_resource_group.RG.location}"
-  resource_group_name       = "${azurerm_resource_group.RG.name}"
-  network_security_group_id = "${azurerm_network_security_group.DBWAS.id}"
+  name                = "IR-DB-MMS-RandDMs-DEV"
+  location            = "${azurerm_resource_group.RG.location}"
+  resource_group_name = "${azurerm_resource_group.RG.name}"
 
   ip_configuration {
     name                          = "config-privateip-db"
@@ -133,10 +131,9 @@ resource "azurerm_network_interface" "DB" {
 
 # Create the database interface
 resource "azurerm_network_interface" "WAS" {
-  name                      = "IR-WAS-MMS-RandDMs-DEV"
-  location                  = "${azurerm_resource_group.RG.location}"
-  resource_group_name       = "${azurerm_resource_group.RG.name}"
-  network_security_group_id = "${azurerm_network_security_group.DBWAS.id}"
+  name                = "IR-WAS-MMS-RandDMs-DEV"
+  location            = "${azurerm_resource_group.RG.location}"
+  resource_group_name = "${azurerm_resource_group.RG.name}"
 
   ip_configuration {
     name                          = "config-privateip-was"
@@ -306,6 +303,11 @@ resource "azurerm_virtual_machine_extension" "DB" {
   type_handler_version = "1.2"
 
   settings = <<SETTINGS
+}
+SETTINGS
+}
+
+/*settings = <<SETTINGS
   {
     "sqlConnectivityType": {
             "value": "Private"
@@ -342,7 +344,7 @@ resource "azurerm_virtual_machine_extension" "DB" {
     }
   }
 SETTINGS
-}
+}*/
 
 # Create the WAS VM
 resource "azurerm_virtual_machine" "WAS" {
