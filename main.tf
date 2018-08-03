@@ -303,6 +303,45 @@ resource "azurerm_virtual_machine_extension" "DB" {
   type_handler_version = "1.2"
 
   settings = <<SETTINGS
+{
+  "AutoTelemetrySettings": {
+"Region": "centralus"
+},
+
+"AutoPatchingSettings": {
+"PatchCategory": "WindowsMandatoryUpdates",
+"Enable": true,
+"DayOfWeek": "Sunday",
+"MaintenanceWindowStartingHour": "2",
+"MaintenanceWindowDuration": "60"
+},
+
+"KeyVaultCredentialSettings": {
+"Enable": false,
+"CredentialName": ""
+},
+
+"ServerConfigurationsManagementSettings": {
+"SQLConnectivityUpdateSettings": {
+"ConnectivityType": "Public",
+"Port": "1433"
+},
+
+"SQLWorkloadTypeUpdateSettings": {
+"SQLWorkloadType": "GENERAL"
+},
+
+"SQLStorageUpdateSettings": {
+"DiskCount": "1",
+"NumberOfColumns": "1",
+"StartingDeviceID": "2",
+"DiskConfigurationType": "NEW"
+},
+
+"AdditionalFeaturesServerConfigurations": {
+"IsRServicesEnabled": "true"
+}
+}
 }
 SETTINGS
 }
@@ -344,6 +383,7 @@ SETTINGS
     }
   }
 SETTINGS
+
 }*/
 
 # Create the WAS VM
